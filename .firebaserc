@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "lose-de-fat"
+  },
+  "targets": {
+    "lose-de-fat": {
+      "hosting": {
+        "wireframes": [
+          "lose-de-fat-wireframes"
+        ]
+      }
+    }
+  }
+}
