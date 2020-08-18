@@ -4,28 +4,28 @@ import 'package:lose_de_fat_wireframes_flutter/widgets/recipe_card.dart';
 class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              height: 40,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.black,
-                  width: 1,
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  'Recipes',
-                  style: Theme.of(context).textTheme.headline6,
-                ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            height: 40,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 1,
               ),
             ),
-            ListView(
+            child: Center(
+              child: Text(
+                'Recipes',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView(
               shrinkWrap: true,
               children: <Widget>[
                 RecipeCard(
@@ -42,10 +42,17 @@ class RecipePage extends StatelessWidget {
                       'https://images.unsplash.com/photo-1517741991040-91338b176129?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f65c4032c1b3131f829d464fb979f5e8&auto=format&fit=crop&w=675&q=80',
                   inFavorites: false,
                 ),
+                RecipeCard(
+                  name: 'Strawberry Juice',
+                  duration: '0:10',
+                  imageURL:
+                      'https://images.unsplash.com/photo-1506802913710-40e2e66339c9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c8ffc5bbb3719b5a46ee703acb0a0ac5&auto=format&fit=crop&w=634&q=80',
+                  inFavorites: false,
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

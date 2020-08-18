@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/chat.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/leaderboard.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/recipes.dart';
-import 'package:lose_de_fat_wireframes_flutter/widgets/fab_bottom_app_bar.dart';
 import 'package:lose_de_fat_wireframes_flutter/widgets/nav_drawer.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -34,30 +33,34 @@ class _ProfilePageState extends State<ProfilePage> {
       key: scaffoldKey,
       drawer: NavDrawer(),
       body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        onTap: _selectedTab,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.equalizer),
-            title: Text('Leaderboard'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            title: Text('Chat'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant_menu),
-            title: Text('Recipes'),
-          ),
-        ],
-      ),
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
+
+  BottomNavigationBar _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      currentIndex: _currentIndex,
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.grey,
+      onTap: _selectedTab,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text('Home'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.equalizer),
+          title: Text('Leaderboard'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat),
+          title: Text('Chat'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.restaurant_menu),
+          title: Text('Recipes'),
+        ),
+      ],
     );
   }
 }

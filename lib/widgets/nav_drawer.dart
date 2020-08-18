@@ -32,7 +32,7 @@ class NavDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.flag),
-            title: Text('Profile'),
+            title: Text('Create Contest'),
             onTap: () => {Navigator.popAndPushNamed(context, '/contest')},
           ),
           ListTile(
@@ -60,10 +60,9 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            enabled: false,
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {Navigator.popAndPushNamed(context, '/')},
           ),
         ],
       ),

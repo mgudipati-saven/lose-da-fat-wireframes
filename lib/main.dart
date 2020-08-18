@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/create_contest.dart';
+import 'package:lose_de_fat_wireframes_flutter/pages/home.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/login.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/profile.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Lose De Fat Wireframes',
+      title: 'Lose Da Fat Wireframes',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LoginPage(),
+        '/home': (context) => HomePage(),
         '/profile': (context) => ProfilePage(),
         '/contest': (context) => CreateContest(),
       },

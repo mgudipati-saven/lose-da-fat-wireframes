@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 50),
               OutlineButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/profile');
+                  Navigator.pushNamed(context, '/home');
                 },
                 child: Text(
                   'Signon with Google',
@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
               ),
               OutlineButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/profile');
+                  Navigator.pushNamed(context, '/home');
                 },
                 child: Text(
                   'Signon with Facebook',
