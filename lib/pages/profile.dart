@@ -34,64 +34,28 @@ class _ProfilePageState extends State<ProfilePage> {
       key: scaffoldKey,
       drawer: NavDrawer(),
       body: _children[_currentIndex],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet<void>(
-              context: context,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15.0),
-                    topRight: Radius.circular(15.0)),
-              ),
-              builder: (BuildContext context) {
-                return Container(
-                  height: 200,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 12, top: 12, right: 12),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.today),
-                            hintText: 'Enter the date',
-                            labelText: 'Date *',
-                          ),
-                        ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.fitness_center),
-                            hintText: 'Enter the weight',
-                            labelText: 'Weight *',
-                          ),
-                        ),
-                        FloatingActionButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: Icon(Icons.check),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              });
-        },
-        tooltip: 'Add New Weight',
-        elevation: 2.0,
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: FABBottomAppBar(
-        color: Colors.grey,
-        selectedColor: Colors.black,
-        notchedShape: CircularNotchedRectangle(),
-        onTabSelected: _selectedTab,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        onTap: _selectedTab,
         items: [
-          FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
-          FABBottomAppBarItem(iconData: Icons.equalizer, text: 'Leaderboard'),
-          FABBottomAppBarItem(iconData: Icons.chat, text: 'Chat'),
-          FABBottomAppBarItem(iconData: Icons.restaurant_menu, text: 'Recipes'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.equalizer),
+            title: Text('Leaderboard'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            title: Text('Chat'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant_menu),
+            title: Text('Recipes'),
+          ),
         ],
       ),
     );
@@ -105,22 +69,71 @@ class StatsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Banner(),
-              SizedBox(height: 5),
-              Chart(),
-              SizedBox(height: 5),
-              History(),
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Banner(),
+          Text(
+            'Progress',
+            style: Theme.of(context).textTheme.headline5,
           ),
-        ),
+          Chart(),
+          Text(
+            'History',
+            style: Theme.of(context).textTheme.headline5,
+          ),
+          History(),
+          FloatingActionButton(
+            onPressed: () {
+              showModalBottomSheet<void>(
+                  context: context,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.0),
+                        topRight: Radius.circular(15.0)),
+                  ),
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: 200,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 12, top: 12, right: 12),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                icon: Icon(Icons.today),
+                                hintText: 'Enter the date',
+                                labelText: 'Date *',
+                              ),
+                            ),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                icon: Icon(Icons.fitness_center),
+                                hintText: 'Enter the weight',
+                                labelText: 'Weight *',
+                              ),
+                            ),
+                            FloatingActionButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Icon(Icons.check),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  });
+            },
+            tooltip: 'Add New Weight',
+            elevation: 2.0,
+            child: Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
@@ -173,7 +186,7 @@ class Chart extends StatelessWidget {
       ),
       child: Icon(
         Icons.show_chart,
-        size: 300,
+        size: 250,
       ),
     );
   }
@@ -185,6 +198,7 @@ class History extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: <Widget>[
+        Divider(thickness: 1),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [Text('April 01, 2020'), Text('102.5'), Icon(Icons.close)],
@@ -193,6 +207,16 @@ class History extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [Text('April 10, 2020'), Text('101.5'), Icon(Icons.close)],
+        ),
+        Divider(thickness: 1),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [Text('April 20, 2020'), Text('100.5'), Icon(Icons.close)],
+        ),
+        Divider(thickness: 1),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [Text('April 20, 2020'), Text('100.5'), Icon(Icons.close)],
         ),
         Divider(thickness: 1),
         Row(
