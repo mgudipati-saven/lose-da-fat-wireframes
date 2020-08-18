@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'package:recipes_app/model/recipe.dart';
-
 class RecipeCard extends StatelessWidget {
-  final Recipe recipe;
   final bool inFavorites;
-  final Function onFavoriteButtonPressed;
+  final String imageURL;
+  final String name;
+  final String duration;
 
-  RecipeCard(
-      {@required this.recipe,
-      @required this.inFavorites,
-      @required this.onFavoriteButtonPressed});
+  RecipeCard({
+    @required this.name,
+    @required this.duration,
+    @required this.inFavorites,
+    @required this.imageURL,
+  });
 
   @override
   Widget build(BuildContext context) {
     RawMaterialButton _buildFavoriteButton() {
       return RawMaterialButton(
         constraints: const BoxConstraints(minWidth: 40.0, minHeight: 40.0),
-        onPressed: () => onFavoriteButtonPressed(recipe.id),
+        onPressed: () => {},
         child: Icon(
-          // Conditional expression:
-          // show "favorite" icon or "favorite border" icon depending on widget.inFavorites:
           inFavorites == true ? Icons.favorite : Icons.favorite_border,
         ),
         elevation: 2.0,
@@ -33,22 +32,15 @@ class RecipeCard extends StatelessWidget {
       return Padding(
         padding: EdgeInsets.all(15.0),
         child: Column(
-          // Default value for crossAxisAlignment is CrossAxisAlignment.center.
-          // We want to align title and description of recipes left:
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              recipe.name,
-            ),
-            // Empty space:
+            Text(name),
             SizedBox(height: 10.0),
             Row(
               children: [
                 Icon(Icons.timer, size: 20.0),
                 SizedBox(width: 5.0),
-                Text(
-                  recipe.duration.toString(),
-                ),
+                Text(duration),
               ],
             ),
           ],
@@ -57,7 +49,7 @@ class RecipeCard extends StatelessWidget {
     }
 
     return GestureDetector(
-      onTap: () => print("Tapped!"),
+      onTap: () {},
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
         child: Card(
@@ -65,14 +57,12 @@ class RecipeCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // We overlap the image and the button by
-              // creating a Stack object:
               Stack(
                 children: <Widget>[
                   AspectRatio(
                     aspectRatio: 16.0 / 9.0,
                     child: Image.network(
-                      recipe.imageURL,
+                      imageURL,
                       fit: BoxFit.cover,
                     ),
                   ),

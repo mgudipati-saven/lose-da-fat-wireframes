@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
 
-class Leaderboard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Leaderboard')),
-      body: LeaderboardPage(),
-    );
-  }
-}
-
 class LeaderboardPage extends StatelessWidget {
   const LeaderboardPage({
     Key key,

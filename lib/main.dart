@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/create_contest.dart';
-import 'package:lose_de_fat_wireframes_flutter/pages/leaderboard.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/login.dart';
 import 'package:lose_de_fat_wireframes_flutter/pages/profile.dart';
 
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginPage(),
         '/profile': (context) => ProfilePage(),
-        '/leaderboard': (context) => Leaderboard(),
         '/contest': (context) => CreateContest(),
       },
     );
