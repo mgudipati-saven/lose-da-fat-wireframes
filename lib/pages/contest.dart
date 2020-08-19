@@ -1,74 +1,111 @@
 import 'package:flutter/material.dart';
+import 'package:lose_de_fat_wireframes_flutter/pages/chat.dart';
+import 'package:lose_de_fat_wireframes_flutter/pages/leaderboard.dart';
+import 'package:lose_de_fat_wireframes_flutter/pages/profile.dart';
+import 'package:lose_de_fat_wireframes_flutter/pages/recipes.dart';
+import 'package:lose_de_fat_wireframes_flutter/widgets/nav_drawer.dart';
 import 'package:lose_de_fat_wireframes_flutter/widgets/simple_time_series_chart.dart';
+import 'package:lose_de_fat_wireframes_flutter/widgets/stacked_area_line_chart.dart';
+import 'package:lose_de_fat_wireframes_flutter/widgets/time_series_bar.dart';
 
-class ProfilePage extends StatelessWidget {
+class ContestPage extends StatefulWidget {
+  @override
+  _ContestPageState createState() => _ContestPageState();
+}
+
+class _ContestPageState extends State<ContestPage> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // Tab navigation
+  int _currentIndex = 0;
+  final List<Widget> _children = [
+    ProfilePage(),
+    LeaderboardPage(),
+    StatsPage(),
+    ChatPage(),
+    RecipePage()
+  ];
+
+  void _selectedTab(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('John Doe'),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                Navigator.pushNamed(context, '/home');
+              })
+        ],
+      ),
+      key: scaffoldKey,
+      drawer: NavDrawer(),
+      body: _children[_currentIndex],
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
+
+  BottomNavigationBar _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      currentIndex: _currentIndex,
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.grey,
+      onTap: _selectedTab,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          title: Text('Profile'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.equalizer),
+          title: Text('Leaderboard'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.pie_chart),
+          title: Text('Stats'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat),
+          title: Text('Chat'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.restaurant_menu),
+          title: Text('Recipes'),
+        ),
+      ],
+    );
+  }
+}
+
+class StatsPage extends StatelessWidget {
+  const StatsPage({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: ListView(
         children: <Widget>[
-          Text(
-            'Progress',
-            style: Theme.of(context).textTheme.headline5,
+          Container(
+            height: 200,
+            child: StackedAreaLineChart.withSampleData(),
           ),
           Container(
             height: 200,
             child: SimpleTimeSeriesChart.withSampleData(),
           ),
-          Text(
-            'History',
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          Expanded(child: History()),
-          FloatingActionButton(
-            onPressed: () {
-              showModalBottomSheet<void>(
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15.0),
-                        topRight: Radius.circular(15.0)),
-                  ),
-                  builder: (BuildContext context) {
-                    return Container(
-                      height: 200,
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(left: 12, top: 12, right: 12),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                icon: Icon(Icons.today),
-                                hintText: 'Enter the date',
-                                labelText: 'Date *',
-                              ),
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                icon: Icon(Icons.fitness_center),
-                                hintText: 'Enter the weight',
-                                labelText: 'Weight *',
-                              ),
-                            ),
-                            FloatingActionButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Icon(Icons.check),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  });
-            },
-            tooltip: 'Add New Weight',
-            elevation: 2.0,
-            child: Icon(Icons.add),
+          Container(
+            height: 200,
+            child: TimeSeriesBar.withSampleData(),
           ),
         ],
       ),
@@ -122,7 +159,7 @@ class Chart extends StatelessWidget {
         ),
       ),
       child: Icon(
-        Icons.show_chart,
+        Icons.multiline_chart,
         size: 250,
       ),
     );

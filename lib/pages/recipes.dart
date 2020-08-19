@@ -9,20 +9,38 @@ class RecipePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            height: 40,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 1,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 30,
+                decoration: BoxDecoration(border: Border(bottom: BorderSide())),
+                child: Text(
+                  'Breakfast',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
-            ),
-            child: Center(
-              child: Text(
-                'Recipes',
-                style: Theme.of(context).textTheme.headline6,
+              Container(
+                height: 30,
+                child: Text(
+                  'Lunch',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: Colors.grey),
+                ),
               ),
-            ),
+              Container(
+                height: 30,
+                child: Text(
+                  'Dinner',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: Colors.grey),
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: ListView(

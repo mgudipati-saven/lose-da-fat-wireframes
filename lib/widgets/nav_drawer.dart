@@ -26,16 +26,6 @@ class NavDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: () => {Navigator.popAndPushNamed(context, '/profile')},
-          ),
-          ListTile(
-            leading: Icon(Icons.flag),
-            title: Text('Create Contest'),
-            onTap: () => {Navigator.popAndPushNamed(context, '/contest')},
-          ),
-          ListTile(
             enabled: false,
             leading: Icon(Icons.settings),
             title: Text('Settings'),

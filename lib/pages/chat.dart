@@ -12,21 +12,6 @@ class ChatPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            height: 40,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 1,
-              ),
-            ),
-            child: Center(
-              child: Text(
-                'Chat',
-                style: Theme.of(context).textTheme.headline6,
-              ),
-            ),
-          ),
           Expanded(
             child: ListView(
               shrinkWrap: true,
