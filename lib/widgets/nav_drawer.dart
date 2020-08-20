@@ -44,10 +44,12 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            enabled: false,
-            leading: Icon(Icons.comment),
-            title: Text('Comment'),
-            onTap: () => {Navigator.of(context).pop()},
+            leading: Icon(Icons.people),
+            title: Text('Invite Friends'),
+            onTap: () => {Navigator.popAndPushNamed(context, '/invite')},
+          ),
+          Divider(
+            thickness: 1,
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),

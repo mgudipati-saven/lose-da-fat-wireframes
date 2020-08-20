@@ -42,7 +42,7 @@ class ContestsPage extends StatelessWidget {
               ),
               builder: (BuildContext context) {
                 return Padding(
-                  padding: const EdgeInsets.only(left: 12, top: 12, right: 12),
+                  padding: const EdgeInsets.all(12),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.min,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'pages/contest.dart';
 import 'pages/contests.dart';
-import 'pages/create_contest.dart';
+import 'pages/invite_friends.dart';
 import 'pages/login.dart';
 import 'pages/profile.dart';
 import 'pages/recipes.dart';
@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => ContestsPage(),
         '/profile': (context) => ProfilePage(),
         '/contest': (context) => ContestPage(),
-        '/contest/add': (context) => CreateContest(),
         '/recipes': (context) => RecipePage(),
+        '/invite': (context) => InviteFriendsPage(),
       },
     );
   }
