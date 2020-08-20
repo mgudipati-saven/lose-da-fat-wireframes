@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "lose-de-fat"
+    "default": "weight-tracker-9f6a8"
   },
   "targets": {
-    "lose-de-fat": {
+    "weight-tracker-9f6a8": {
       "hosting": {
         "wireframes": [
-          "lose-de-fat-wireframes"
+          "wtwireframes"
         ]
       }
     }

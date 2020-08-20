@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lose_de_fat_wireframes_flutter/widgets/nav_drawer.dart';
+
+import '../widgets/nav_drawer.dart';
 
 class ContestsPage extends StatelessWidget {
   @override
@@ -31,7 +32,85 @@ class ContestsPage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, '/contest/add'),
+        onPressed: () => {
+          showModalBottomSheet<void>(
+              context: context,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15.0),
+                    topRight: Radius.circular(15.0)),
+              ),
+              builder: (BuildContext context) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 12, top: 12, right: 12),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          icon: Icon(Icons.title),
+                          hintText: 'Enter the contest name',
+                          labelText: 'Contest Name *',
+                        ),
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          icon: Icon(Icons.today),
+                          hintText: 'Enter the start date',
+                          labelText: 'Start Date *',
+                        ),
+                      ),
+                      DropdownButtonFormField<String>(
+                        decoration: const InputDecoration(
+                          icon: Icon(Icons.repeat_one),
+                          hintText: 'Enter the duration in weeks',
+                          labelText: 'Duration (weeks) *',
+                        ),
+                        value: '4',
+                        icon: Icon(Icons.arrow_downward),
+                        iconSize: 24,
+                        elevation: 16,
+                        onChanged: (String newValue) {},
+                        items: <String>['4', '6', '8', '10', '12']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                      DropdownButtonFormField<String>(
+                        decoration: const InputDecoration(
+                          icon: Icon(Icons.schedule),
+                          hintText: 'Enter weekly weigh-in',
+                          labelText: 'Weigh-In Frequency *',
+                        ),
+                        value: 'Saturday, 1 PM',
+                        icon: Icon(Icons.arrow_downward),
+                        iconSize: 24,
+                        elevation: 16,
+                        onChanged: (String newValue) {},
+                        items: <String>[
+                          'Saturday, 1 PM',
+                          'Monday 1 PM',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                      SizedBox(height: 10),
+                      FloatingActionButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Icon(Icons.check),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+        },
         child: Icon(Icons.add),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lose_de_fat_wireframes_flutter/widgets/simple_time_series_chart.dart';
+
+import '../widgets/simple_time_series_chart.dart';
 
 class ProfilePage extends StatelessWidget {
   @override

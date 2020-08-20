@@ -5,64 +5,92 @@ class CreateContest extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Create a Contest')),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.black,
-                  width: 1,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.title),
+              hintText: 'Enter the contest name',
+              labelText: 'Contest Name *',
+            ),
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.today),
+              hintText: 'Enter the start date',
+              labelText: 'Start Date *',
+            ),
+          ),
+          DropdownButtonFormField<String>(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.repeat_one),
+              hintText: 'Enter the duration in weeks',
+              labelText: 'Duration (weeks) *',
+            ),
+            value: '4',
+            icon: Icon(Icons.arrow_downward),
+            iconSize: 24,
+            elevation: 16,
+            onChanged: (String newValue) {},
+            items: <String>['4', '6', '8', '10', '12']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              DropdownButtonFormField<String>(
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.schedule),
+                  hintText: 'Enter weekly weigh-in',
+                  labelText: 'Weigh-In Frequency *',
                 ),
+                value: '4',
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                onChanged: (String newValue) {},
+                items: <String>['4', '6', '8', '10', '12']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
               ),
-              child: Center(
-                child: Text(
-                  'Image',
-                  style: Theme.of(context).textTheme.headline6,
+              DropdownButtonFormField<String>(
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.schedule),
+                  hintText: 'Enter weekly weigh-in',
+                  labelText: 'Weigh-In Frequency *',
                 ),
+                value: '4',
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                onChanged: (String newValue) {},
+                items: <String>['4', '6', '8', '10', '12']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
               ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.title),
-                hintText: 'Enter the contest name',
-                labelText: 'Contest Name *',
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.today),
-                hintText: 'Enter the start date',
-                labelText: 'Start Date *',
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.repeat_one),
-                hintText: 'Enter the duration in weeks',
-                labelText: 'Duration *',
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.schedule),
-                hintText: 'Enter weekly weigh-in',
-                labelText: 'Weigh-In Frequency *',
-              ),
-            ),
-            FloatingActionButton(
-              onPressed: () => Navigator.pop(context),
-              child: Icon(Icons.check),
-            ),
-          ],
-        ),
+            ],
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            onPressed: () => Navigator.pop(context),
+            child: Icon(Icons.check),
+          ),
+        ],
       ),
     );
   }

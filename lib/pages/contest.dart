@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:lose_de_fat_wireframes_flutter/pages/chat.dart';
-import 'package:lose_de_fat_wireframes_flutter/pages/leaderboard.dart';
-import 'package:lose_de_fat_wireframes_flutter/pages/profile.dart';
-import 'package:lose_de_fat_wireframes_flutter/pages/recipes.dart';
-import 'package:lose_de_fat_wireframes_flutter/widgets/nav_drawer.dart';
-import 'package:lose_de_fat_wireframes_flutter/widgets/simple_time_series_chart.dart';
-import 'package:lose_de_fat_wireframes_flutter/widgets/stacked_area_line_chart.dart';
-import 'package:lose_de_fat_wireframes_flutter/widgets/time_series_bar.dart';
+
+import '../widgets/nav_drawer.dart';
+import '../widgets/simple_time_series_chart.dart';
+import '../widgets/stacked_area_line_chart.dart';
+import '../widgets/time_series_bar.dart';
+import 'chat.dart';
+import 'leaderboard.dart';
+import 'profile.dart';
+import 'recipes.dart';
 
 class ContestPage extends StatefulWidget {
   @override

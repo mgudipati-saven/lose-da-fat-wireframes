@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lose_de_fat_wireframes_flutter/widgets/recipe_card.dart';
+
+import '../widgets/recipe_card.dart';
 
 class RecipePage extends StatelessWidget {
   @override
